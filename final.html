@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="final.css" />
+  </head>
+  <body onload="dropdownFunction1(); dropdownFunction2();">
+    <nav class="navbar navbar-expand-md navbar-light">
+      <!-- Navbar content goes here -->
+
+      <a class="navbar-brand" href="#">HOSTEL MANAGEMENT SYSTEM</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Left-side Navigation Menu -->
+        <div class="col-md-3 p-0">
+          <!-- Navigation content goes here -->
+
+          <div class="nav flex-column">
+            <div class="nav-item">
+              <a href="#" class="nav-link dashboard-link"
+                ><i class="fas fa-tachometer-alt"></i> Dashboard</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link room-master-link"
+                ><i class="fas fa-building"></i> RoomMaster</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link bed-master-link"
+                ><i class="fas fa-bed"></i> BedMaster</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link student-master-link"
+                ><i class="fas fa-user-graduate"></i> Student Master</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link money-receipt-link"
+                ><i class="fas fa-receipt"></i> Money Receipt</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-file-invoice-dollar"></i> Fee Summary</a
+              >
+            </div>
+            <div class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-key"></i> Change Password</a
+              >
+            </div>
+            <div class="nav-item nav-footer">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-user"></i> Admin</a
+              >
+            </div>
+          </div>  <!-- nav flex-column div ends here -->
+        </div>    <!-- col-md-3 p-0 div ends here -->
+
+        <!-- Content Area Starts here-->
+        <div class="col-md-9">
+          <div class="container-fluid">
+            <div class="row">
+
+              <!-- Dashboard content -->
+              <div class="col-md-12 dashboard-content">
+                <!-- Dashboard content goes here -->
+                 <img
+                  src="https://www.hotelogix.com/blog/wp-content/uploads/2014/07/Effective-Hostel-PMS-for-Hostel-Management.jpg"
+                  alt="Hostel Management Image"
+                  width="100%"
+                />
+                <h1 style="text-align: center">Hostel Management System</h1>
+            </div>   <!-- dashboard-content div ends here -->
+
+              <!-- Room master starts here-->
+              <div class="col-md-12 room-master-content">
+                <!-- Room Master content starts here -->
+
+                <div class="container">       <!-- RoomMaster container starts here -->
+                  <h4 class="text-left mb-4">Room Master</h4>
+                  <div class="heading-line"></div>
+
+                  <!-- Button to trigger the modal -->
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#myModal"
+                  >
+                    Add New Room
+                  </button>
+
+                  <!-- For Adding Data to Modal Popup -->
+                  <div
+                    class="modal fade"
+                    id="myModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Room Master</h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>   <!-- modal header div ends here -->
+                        <div class="modal-body">
+                          <!-- <div class="form-group row">
+                          <label for="roomID" class="col-sm-4 col-form-label mb-2">Room ID:</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="roomID" />
+                          </div>
+                        </div> -->
+                          <div class="form-group row">
+                            <label for="roomNo" class="col-sm-4 col-form-label"
+                              >Room No:</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="roomNo"
+                              />
+                            </div>    <!-- col-sm-8 div ends here -->
+                          </div>      <!-- form-group row div ends here -->
+                          <hr />
+                          <div class="form-group row">
+                            <label
+                              for="totalBeds"
+                              class="col-sm-4 col-form-label"
+                              >Total Beds:</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="totalBeds"
+                              />
+                            </div>  <!-- col-sm-8 div ends here -->
+                          </div>    <!-- form-group row div ends here -->
+                        </div>      <!-- modal-body div ends here -->
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="btnRoomAdd"
+                            onclick="addRoom()"
+                          >
+                            Save
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>    <!-- modal footer div ends here -->
+                      </div>      <!-- modal-content div ends here -->
+                    </div>        <!-- modal-dialog div ends here -->
+                  </div>          <!-- modal fade div ends here -->
+
+                  <!-- Add New Room Modal starts here -->
+                  <button onclick="showData()" class="btn btn-success">
+                    Refresh
+                  </button> <!-- refresh button -->
+                  <br />
+                  <br />
+                  
+                  <table class="table table-bordered"> <!-- RoomMaster Table starts here -->
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <!-- <th>Room ID</th> -->
+                        <th>Room No</th>
+                        <th>Total Beds</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tblRoomBody"></tbody>
+                  </table>       <!-- RoomMaster table ends here -->
+
+                  <!-- Edit RoomMaster Modal -->
+
+                  <div
+                    class="modal fade"
+                    id="editModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="editModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editModalLabel">
+                            Edit Row
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>        <!-- modal header div ends here -->
+                        <div class="modal-body">
+                          <!-- <div class="form-group row">
+                          <label for="editRoomID" class="col-sm-4 col-form-label">Room ID:</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" id="editRoomID">
+                          </div>
+                        </div> -->
+                          <div class="form-group row">
+                            <label
+                              for="editRoomNo"
+                              class="col-sm-4 col-form-label"
+                              >Room No:</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="editRoomNo"
+                              />
+                            </div>          <!-- col-sm-8 div ends here -->
+                          </div>            <!-- form-group row div ends here -->
+                          <div class="form-group row">
+                            <label
+                              for="editTotalBeds"
+                              class="col-sm-4 col-form-label"
+                              >Total Beds:</label
+                            >
+                            <div class="col-sm-8">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="editTotalBeds"
+                              />
+                            </div>       <!-- col-sm-8 div ends here -->
+                          </div>         <!-- form-group row div ends here -->
+                        </div>           <!-- modal-body div ends here -->
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="btnSaveChanges"
+                            onclick="editRoom()"
+                          >
+                            Save
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>     <!-- modal-footer div ends here -->
+                      </div>       <!-- modal content div ends here -->
+                    </div>         <!-- modal-dialog div ends here -->
+                  </div>           <!-- modal fade div ends here -->
+                </div>             <!-- RoomMaster container div ends here-->
+            </div>                 <!-- RoomMaster content div ends here-->
+              
+            
+            <!-- Bed master starts here -->
+              <div class="col-md-12 bed-master-content">  <!-- Bed Master content starts here   -->
+                     <div class="col-10"> 
+                        <div class="container">         <!-- BedMaster container div starts here -->
+                          <h4 class="text-center mb-4">Bed Master</h4>
+                          <div class="heading-line"></div>
+      
+                          <!-- Button to trigger the modal -->
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#myBedModal"
+                          >
+                            Add New Bed
+                          </button>
+                          <!-- For Add Modal  -->
+                          <div
+                            class="modal fade"
+                            id="myBedModal"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="myModalLabel"
+                            aria-hidden="true"
+                          >
+                            <div
+                              class="modal-dialog modal-dialog-centered"
+                              role="document"
+                            >
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Bed Master</h5>
+                                </div>
+                                <div class="modal-body">
+                                  <hr />
+                                  <!-- <div class="form-group">
+                                  <label for="bedNo">Bed ID:</label>
+                                  <input type="text" class="form-control" id="bedID">
+                                </div> -->
+                                  <div class="form-group">
+                                    <label for="roomNo" class="form-label mb-label"
+                                      >Room No.</label
+                                    >
+                                    <!-- <input
+                                      type="text"
+                                      class="form-control"
+                                      id="broomNo"
+                                    />-->
+                                     <select
+                                      class="form-select custom-input"
+                                      id="broomNo"
+                                      onchange="RoomNoFunction()"
+                                    >
+                                      <option selected>Select Room No</option>
+                                       Room No dropdown options 
+                                    </select> 
+                                  </div>     <!-- form-group div ends here -->
+                                  <hr />
+                                  <div class="form-group">
+                                    <label for="bedNo">Bed No:</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="bedNo"
+                                    />
+                                  </div>      <!-- form-group div ends here -->
+                                  <hr />
+                                  <div class="form-group">
+                                    <label for="bedCharge">Bed Charge:</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="bedCharge"
+                                    />
+                                  </div>      <!-- form-group div ends here -->
+                                </div>        <!-- modal-body div ends here -->
+                                <div class="modal-footer"> <!-- modal-footer starts here -->
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="btnBedAdd"
+                                    onclick="addBed()"
+                                  >
+                                    Save
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                </div>   <!-- modal-footer div ends here -->
+                              </div>     <!-- modal-content div ends here -->
+                            </div>       <!-- modal-dialog div ends here -->
+                          </div>        <!-- modal-fade div ends here -->
+      
+                          <button onclick="show1Data()" class="btn btn-success">
+                            Refresh
+                          </button>
+                          <table class="table table-bordered">   <!-- BedMaster table starts here-->
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <!-- <th>Bed ID</th> -->
+                                <th>Room No</th>
+                                <th>Bed No</th>
+                                <th>Bed Charge</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tblBedBody">
+                              <!-- Bed details will be inserted here  -->
+                            </tbody>
+                          </table>                             <!-- BedMaster table ends here-->
+      
+                          
+                  <!-- Edit BedMaster Modal -->
+
+                  <div
+                      class="modal fade"
+                      id="editBedModal"
+                      tabindex="-1"
+                      aria-labelledby="editBedModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="editBedModalLabel">
+                              Edit Bed
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>  <!-- modal-header div ends here-->
+                          <div class="modal-body">
+                             <!-- <div class="mb-3">
+                            <label for="editBedID" class="form-label">Bed ID</label>
+                            <input type="text" class="form-control" id="editBedID" placeholder="Enter Bed ID">
+                          </div>  -->
+                            <div class="mb-3">
+                              <label for="editRoomNo" class="form-label"
+                                >Room Number</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="editBRoomNo"
+                                placeholder="Enter Room Number"
+                              />
+                            </div>  <!-- mb-3  div ends here-->
+                            <div class="mb-3">
+                              <label for="editBedNo" class="form-label"
+                                >Bed Number</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="editBedNo"
+                                placeholder="Enter Bed Number"
+                              />
+                            </div>   <!-- mb-3  div ends here-->
+                            <div class="mb-3">
+                              <label for="editBedCharge" class="form-label"
+                                >Bed Charge</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="editBedCharge"
+                                placeholder="Enter Bed Charge"
+                              />
+                            </div>   <!-- mb-3 div ends here-->
+                          </div>    <!-- modal-body div ends here-->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              onclick="editBed()"
+                            >
+                              Save
+                            </button>
+                          </div>  <!-- modal-footer div ends here-->
+                        </div>    <!-- modal-content div ends here-->
+                      </div>      <!-- modal-dialog div ends here-->
+                    </div>        <!-- modal-fade div ends here-->
+                </div>         <!-- BedMaster container div ends here-->
+              </div>          <!-- col-10  div ends here-->
+            </div>           <!-- BedMaster content div ends here-->
+            
+            
+            <!-- Student Master starts here -->
+              <div class="col-md-12 student-master-content"> <!-- Student Master content starts here -->
+                <div class="container">              <!-- StudentMaster container div starts here-->
+                  <h4 class="text-left mb-4">Student Master</h4>
+                  <div class="heading-line"></div>
+
+                  <!-- Button to trigger the modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addstudentModal">Add New
+            Student</button>
+
+            <!-- Add Student Modal -->
+          <div class="modal fade" id="addstudentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered custom-modal" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Student Master</h5>
+              </div>    <!-- modal-header div ends here-->
+              <div class="modal-body">
+                <hr>
+                <div class="form-group">
+                  <label for="registrationNo">Registration No</label>
+                  <input type="text" class="form-control" id="registrationNo">
+                </div>  <!-- form-group div ends here-->
+                <hr>
+                <div class="form-group">
+                  <label for="studentName">Student Name</label>
+                  <input type="text" class="form-control" id="studentName">
+                </div>  <!-- form-group div ends here-->
+                <hr>
+                <div class="form-group">
+                  <label for="contactNo">Contact No</label>
+                  <input type="text" class="form-control" id="contactNo">
+                </div>  <!-- form-group div ends here-->
+                <hr>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" id="address">
+                </div>  <!-- form-group div ends here-->
+                <hr>
+                <div class="form-group">
+                  <!-- <label for="bedNo">Bed No.</label>
+                  <input type="text" class="form-control" id="bedNo" list="bedNoOptions">
+                  <datalist id="bedNoOptions">
+                    <option value=""></option>
+                    <option value="101"></option>
+                    <option value="102"></option>
+                    <option value="103"></option>
+                    <option value="104"></option>
+                  </datalist> -->
+                  <label for="bedNo" class="form-label mb-label">Bed No</label>
+  
+                  <select class="form-select custom-input" id="sbedNo" onchange="BedNoFunction()">
+                    <option selected>Select Bed No</option>
+                    <!-- Bed No dropdown options -->
+  
+                  </select>
+                </div>   <!-- form-group div ends here-->
+                <hr>
+                <div class="form-group">
+                  <label for="bedCharge">Bed Charge</label>
+                  <input type="text" class="form-control" id="sbedCharge">
+                </div>  <!-- form-group div ends here-->
+              </div>   <!-- modal-body div ends here-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnStudentAdd" onclick="addStudent()">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>    <!-- modal-footer div ends here-->
+            </div>     
+          </div>   <!-- modal-dialog div ends here-->
+        </div>   <!-- modal fade div ends here-->
+      
+
+
+        <button onclick="showStudentData()" class="btn btn-success">Refresh</button>
+        <table class="table table-bordered">     <!-- StudentMaster Table div starts here-->
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Registration No</th>
+              <th>Student Name</th>
+              <th>Contact</th>
+              <th>Address</th>
+              <th>Bed No</th>
+              <th>Bed Charge</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tblStudentBody">
+            <!-- Student details will be inserted here -->
+          </tbody>
+        </table>
+
+
+        <!-- Edit Student Master Modal -->
+        <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editStudentModalLabel">Edit Student Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>  <!-- modal-header div ends here-->
+              <div class="modal-body">
+
+                <div class="mb-3">
+                  <label for="editRegistrationNo" class="form-label">Registration Number</label>
+                  <input type="text" class="form-control" id="editRegistrationNo"
+                    placeholder="Enter Registration Number">
+                </div>   <!-- mb-3 div ends here-->
+                <div class="mb-3">
+                  <label for="editStudentName" class="form-label">Student Name</label>
+                  <input type="text" class="form-control" id="editStudentName" placeholder="Enter Student Name">
+                </div>    <!-- mb-3 div ends here-->
+                <div class="mb-3">
+                  <label for="editContactNo" class="form-label">Contact No</label>
+                  <input type="text" class="form-control" id="editContactNo" placeholder="Enter Contact No">
+                </div>    <!-- mb-3 div ends here-->
+                <div class="mb-3">
+                  <label for="editAddress" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="editAddress" placeholder="Enter Address">
+                </div>     <!-- mb-3 div ends here-->
+                <div class="mb-3">
+                  <label for="editBedNo" class="form-label">Bed No.</label>
+                  <input type="text" class="form-control" id="editSBedNo" placeholder="Enter Bed No">
+                </div>    <!-- mb-3 div ends here-->
+                <div class="mb-3">
+                  <label for="editBedCharge" class="form-label">Bed Charge</label>
+                  <input type="text" class="form-control" id="editSBedCharge" placeholder="Enter Bed Charge">
+                </div>    <!-- mb-3 div ends here-->
+              </div>     <!-- modal-body div ends here-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editStudent()">Save</button>
+              </div>   <!-- modal-footer div ends here-->
+            </div>     <!-- modal-content div ends here-->
+          </div>       <!-- modal-dialog div ends here-->
+        </div>         <!-- modal-fade div ends here-->
+          </div>  <!-- StudentMaster div ends here-->
+            </div>   <!-- StudentMaster content div ends here-->
+            
+            <!-- Money Receipt starts here -->
+            <div class="col-md-12 money-receipt-content"><!-- Money Receipt content starts here -->
+              <div class="container">     <!-- Money Receipt container starts here-->
+                <h4 class="text-left mb-4">Money Receipt</h4>
+                <div class="heading-line"></div>
+        
+                <!-- Button to trigger the modal -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addMoneyReceiptModal"
+                >
+                  Add New Money Receipt
+                </button>
+        
+                <!-- Add Money Receipt Modal -->
+                <div
+                  class="modal fade"
+                  id="addMoneyReceiptModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="myModalLabel"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered custom-modal"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Money Receipt</h5>
+                      </div>  <!-- modal-header div ends here-->
+                      <div class="modal-body">
+                        <hr />
+                        <div class="form-group">
+                          <label for="mrNo">Mr No</label>
+                          <input type="text" class="form-control" id="mrNo" />
+                        </div>  <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="date">Date</label>
+                          <input type="text" class="form-control" id="date" />
+                        </div>   <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="registrationNo">Registration No</label>
+                          <input type="text" class="form-control" id="registrationNo" />
+                        </div>    <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="studentName">Student Name</label>
+                          <input type="text" class="form-control" id="studentName" />
+                        </div>    <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="contactNo">Contact No</label>
+                          <input type="text" class="form-control" id="contactNo" />
+                        </div>     <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" id="address" />
+                        </div>   <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <!-- <label for="bedNo">Bed No.</label>
+              <input type="text" class="form-control" id="bedNo" list="bedNoOptions">
+              <datalist id="bedNoOptions">
+                <option value=""></option>
+                <option value="101"></option>
+                <option value="102"></option>
+                <option value="103"></option>
+                <option value="104"></option>
+              </datalist> -->
+                          <label for="bedNo" class="form-label mb-label">Bed No:</label>
+        
+                          <select
+                            class="form-select custom-input"
+                            id="sbedNo"
+                            onchange="BedNoFunction()"
+                          >
+                            <option selected>Select Bed No</option>
+                            <!-- Bed No dropdown options -->
+                          </select>
+                        </div>   <!-- form-group div ends here-->
+                        <hr />
+                        <div class="form-group">
+                          <label for="amtReceived">Amount Received:</label>
+                          <input type="text" class="form-control" id="amtReceived" />
+                        </div>   <!-- form-group div ends here-->
+                      </div>   <!-- modal-body div ends here-->
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          id="btnStudentAdd"
+                          onclick="addMoneyReceipt()"
+                        >
+                          Save
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>  <!-- modal-footer div ends here-->
+                    </div>    <!-- modal-content div ends here-->
+                  </div>    <!-- modal-dialog div ends here-->
+                </div>     <!-- modal-fade div ends here-->
+        
+                <button onclick="showMoneyReceiptData()" class="btn btn-success">
+                  Refresh
+                </button>
+                <table class="table table-bordered">   <!-- Money Receipt table starts here-->
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>MR No</th>
+                      <th>Date</th>
+                      <th>Registration No</th>
+                      <th>Student Name</th>
+                      <th>Contact</th>
+                      <th>Address</th>
+                      <th>Bed No</th>
+                      <th>Amount Received</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tblMoneyReceiptBody">
+                    <!-- Money Details details will be inserted here -->
+                  </tbody>
+                </table>      <!-- Money Receipt table ends here-->
+        
+                <!-- Edit Student Master Modal -->
+                <div
+                  class="modal fade"
+                  id="editMoneyReceiptModal"
+                  tabindex="-1"
+                  aria-labelledby="editMoneyReceiptModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editStudentModalLabel">
+                          Edit Money Receipt Details
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>  <!-- modal-header div ends here-->
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="editmrNo" class="form-label">MR No:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editmrNo"
+                            placeholder="Enter MR No"
+                          />
+                        </div>  <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editDate" class="form-label">Date:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editDate"
+                            placeholder="Enter Date"
+                          />
+                        </div>   <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editRegistrationNo" class="form-label"
+                            >Registration Number</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editRegistrationNo"
+                            placeholder="Enter Registration Number"
+                          />
+                        </div>   <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editStudentName" class="form-label"
+                            >Student Name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editStudentName"
+                            placeholder="Enter Student Name"
+                          />
+                        </div>  <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editContactNo" class="form-label"
+                            >Contact No</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editContactNo"
+                            placeholder="Enter Contact No"
+                          />
+                        </div>  <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editAddress" class="form-label">Address</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editAddress"
+                            placeholder="Enter Address"
+                          />
+                        </div>   <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editBedNo" class="form-label">Bed No.</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editSBedNo"
+                            placeholder="Enter Bed No"
+                          />
+                        </div>   <!-- mb-3 div ends here-->
+                        <div class="mb-3">
+                          <label for="editAmtReceived" class="form-label"
+                            >Amount Received:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="editAmtReceived"
+                            placeholder="Enter Amount Received"
+                          />
+                        </div>   <!-- mb-3 div ends here-->
+                      </div>    <!-- modal-body div ends here -->
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onclick="editMoneyReceipt()"
+                        >
+                          Save
+                        </button>
+                      </div> <!-- modal-footer div ends here-->
+                    </div>  <!-- modal-content div ends here-->
+                  </div>    <!-- modal-dialog div ends here-->
+                </div>   <!-- modal-fade div ends here-->
+              </div>      <!-- Money Receipt container div ends here-->
+            </div>        <!-- Money Receipt content div ends here-->
+
+            
+        
+        
+        
+        
+        </div>   <!-- row div ends here-->
+      </div>   <!-- container-fluid div ends here-->
+     </div>       <!-- col-md-9 div ends here-->
+   </div>         <!-- row div ends here-->
+  </div>         <!-- container-fluid ends here-->
+  
+  
+
+
+
+
+       
+
+    <!-- dropdown.js -->
+    <script src="dropdown.js"></script>
+
+    <script src="final.js"></script>
+  </body>
+</html>
