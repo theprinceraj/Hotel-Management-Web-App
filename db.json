@@ -39,6 +39,12 @@
       "bedNo": "03",
       "bedCharge": "1200",
       "id": 4
+    },
+    {
+      "broomNo": "102",
+      "bedNo": "02",
+      "bedCharge": "1511",
+      "id": 5
     }
   ],
   "Student": [

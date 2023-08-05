@@ -266,6 +266,7 @@ function addBed() {
   $("#broomNo").val("");
   $("#bedNo").val("");
   $("#bedCharge").val("");
+  $("#myBedModal").modal("hide");
 }
 
 // Bed Details Display Function
