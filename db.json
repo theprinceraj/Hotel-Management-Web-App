@@ -72,14 +72,14 @@
   ],
   "Money": [
     {
-      "mrNo": "04",
-      "datePicker": "04/04/2023",
-      "regNo": "202303",
-      "studentName": "Alaya F1",
-      "contact": "0987654322",
-      "address": "",
-      "bedNo": "03",
-      "amountReceived": "1000",
+      "mrNo": "01",
+      "datePicker": "1000-02-01",
+      "regNo": "Select Registration No",
+      "studentName": "Rajesh",
+      "contact": "988888888888",
+      "address": "Hinjewadi",
+      "bedNo": "700",
+      "amountReceived": "30999",
       "id": 3
     },
     {
@@ -92,6 +92,17 @@
       "bedNo": "01",
       "amountReceived": "4000",
       "id": 4
+    },
+    {
+      "mrNo": "04",
+      "datePicker": "2022-12-10",
+      "regNo": "202303",
+      "studentName": "Alaya F1",
+      "contact": "999111022",
+      "address": "India",
+      "bedNo": "03",
+      "amountReceived": "1000",
+      "id": 5
     }
   ],
   "Fee": [

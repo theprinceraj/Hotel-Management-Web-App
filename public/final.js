@@ -718,7 +718,7 @@ function editMoneyReceipt() {
     regNo: $("#editregNo").val(),
     studentName: $("#editstudentName").val(),
     contact: $("#editContact").val(),
-    address: $("#editAddress").val(),
+    address: $("#editAddressMoneyReceiptModal").val(),
     bedNo: $("#editbedNo").val(),
     amountReceived: $("#editAmountReceived").val(),
   });
@@ -743,7 +743,7 @@ function editMoneyReceipt() {
   $("#editregNo").val("");
   $("#editstudentName").val("");
   $("#editContact").val("");
-  $("#editAddress").val("");
+  $("#editAddressMoneyReceiptModal").val("");
   $("#editbedNo").val("");
   $("#editAmountReceived").val("");
   $("#editMoneyReceiptModal").modal("hide");
