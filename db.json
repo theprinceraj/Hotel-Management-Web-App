@@ -14,6 +14,11 @@
       "roomNo": "103",
       "totalBeds": "03",
       "id": 3
+    },
+    {
+      "roomNo": "104",
+      "totalBeds": "04",
+      "id": 4
     }
   ],
   "Bed": [
@@ -56,48 +61,37 @@
       "id": 2
     },
     {
-      "registrationNo": "202103",
-      "studentName": "Sarah",
-      "contactNo": "1234567890",
-      "address": "Mesra",
-      "sbedNo": "02",
-      "sbedCharge": "2000",
+      "registrationNo": "202303",
+      "studentName": "Sarah K",
+      "contactNo": "9988776644",
+      "address": "Ranchi",
+      "sbedNo": "03",
+      "sbedCharge": "1500",
       "id": 3
     }
   ],
   "Money": [
     {
-      "mr-no": "11",
-      "date-picker": "05/30/2023",
-      "reg-no": "202303",
-      "student-name": "Chunnu Mitra",
-      "contact": "9097075232",
-      "address": "Hinoo Road,Ranchi",
-      "bed-no": "03",
-      "amount-received": "100000",
-      "id": 1
-    },
-    {
-      "mr-no": "01",
-      "date-picker": "05/28/2023",
-      "reg-no": "202305",
-      "student-name": "Elina Paul",
-      "contact": "9835366336",
-      "address": "Kutchery Road,Ranchi",
-      "bed-no": "05",
-      "amount-received": "1000",
-      "id": 2
-    },
-    {
-      "mr-no": "02",
-      "date-picker": "05/01/2023",
-      "reg-no": "202302",
-      "student-name": "Bikash Jena",
-      "contact": "9431543231",
-      "address": "Kanke Road,Ranchi",
-      "bed-no": "02",
-      "amount-received": "2000",
+      "mrNo": "04",
+      "datePicker": "04/04/2023",
+      "regNo": "202303",
+      "studentName": "Alaya F1",
+      "contact": "0987654322",
+      "address": "",
+      "bedNo": "03",
+      "amountReceived": "1000",
       "id": 3
+    },
+    {
+      "mrNo": "01",
+      "datePicker": "2021-12-01",
+      "regNo": "202301",
+      "studentName": "Amit Kumar",
+      "contact": "8889997776",
+      "address": "Ranchi",
+      "bedNo": "01",
+      "amountReceived": "4000",
+      "id": 4
     }
   ],
   "Fee": [

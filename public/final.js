@@ -80,7 +80,8 @@ moneyReceiptLink.addEventListener("click", function (e){
 //   });
 // });
 
-// Add New Room
+// JS CODE FOR ROOMMASTER
+// ADD NEW ROOM
 function addRoom() {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -112,7 +113,7 @@ function addRoom() {
   $("totalBeds").val("");
 }
 
-// Room Details Display Function
+// ROOM DETAILS DISPLAY FUNCTION
 function showData() {
   var settings = {
     url: "http://localhost:3000/RoomMaster/",
@@ -154,7 +155,7 @@ function generateActionButtons(id) {
   );
 }
 
-// Edit row function
+// Edit Room row function
 // Implement the edit functionality here
 //   // You can access the row data using the "id" parameter
 //   // For example, you can fetch the row data from the server based on the ID
@@ -540,7 +541,7 @@ function editStudent() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      show2Data();
+      showStudentData();
     })
     .catch((error) => console.log("ERROR", error));
 
@@ -595,7 +596,204 @@ function BedNoFunction() {
   });
 }
 
+
+
 // JS CODE FOR MONEY RECEIPT
+// Add New Money Receipt
+
+function addMoneyReceipt() {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    mrNo:$("#mrNo").val(),
+    datePicker:$("#datePicker").val(),
+    regNo: $("#regNo").val(),
+    studentName: $("#studentName").val(),
+    contact: $("#contact").val(),
+    address: $("#address").val(),
+    bedNo: $("#bedNo").val(),
+    amountReceived: $("#amountReceived").val(),
+  });
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("http://localhost:3000/Money", requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response here if needed
+      console.log(data); // Log the response to the console
+      showMoneyReceiptData(); // Refresh the table
+    })
+    .catch((error) => console.log("Error:", error));
+
+  $("#mrNo").val("");
+  $("#datePicker").val("");
+  $("#regNo").val("");
+  $("#studentName").val("");
+  $("#contact").val("");
+  $("#address").val("");
+  $("#bedNo").val("");
+  $("#amountReceived").val("");
+}
+
+// Money Details Display Function
+function showMoneyReceiptData() {
+  var settings = {
+    url: "http://localhost:3000/Money/",
+    method: "GET",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    if (response.length > 0) {
+      var html = "";
+      document.getElementById("tblMoneyReceiptBody").innerHTML = "";
+      for (let i = 0; i < response.length; i++) {
+        html +=
+          "<tr><td>" +
+          response[i].id +
+          "</td><td>" +
+          response[i].mrNo +
+          "</td><td>" +
+          response[i].datePicker + 
+          "</td><td>" +
+          response[i].regNo +
+          "</td><td>" +
+          response[i].studentName +
+          "</td><td>" +
+          response[i].contact +
+          "</td><td>" +
+          response[i].address +
+          "</td><td>" +
+          response[i].bedNo +
+          "</td><td>" +
+          response[i].amountReceived +
+          "</td> " +
+          generateActionMoneyButtons(response[i].id) + // Add the action buttons to the row
+          "</tr>";
+      }
+      document.getElementById("tblMoneyReceiptBody").innerHTML += html;
+    }
+  });
+}
+
+//for editing student details
+// Function to generate the action buttons for each row
+function generateActionMoneyButtons(id) {
+  return (
+    '<td><button class="btn btn-sm btn-primary" onclick="editMoneyRow(' +
+    id +
+    ')">Edit</button> ' +
+    '<button class="btn btn-sm btn-danger" onclick="deleteMoneyRow(' +
+    id +
+    ')">Delete</button></td>'
+  );
+}
+
+function editMoneyRow(id) {
+  currentEditID = id; // Store the ID of the row being edited
+  populateModalMoneyFields(id); // Populate the modal fields with row data
+  $("#editMoneyReceiptModal").modal("show"); // Open the edit modal
+}
+
+// Function to populate the modal fields with data
+function populateModalMoneyFields(id) {
+  // Fetch the data for the given ID and populate the input fields in the edit modal
+  // Replace this with your implementation
+}
+
+function editMoneyReceipt() {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    mrNo: $("#editmrNo").val(),
+    datePicker: $("#editdatePicker").val(),
+    regNo: $("#editregNo").val(),
+    studentName: $("#editstudentName").val(),
+    contact: $("#editContact").val(),
+    address: $("#editAddress").val(),
+    bedNo: $("#editbedNo").val(),
+    amountReceived: $("#editAmountReceived").val(),
+  });
+
+  var requestOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("http://localhost:3000/Money/" + currentEditID, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      showMoneyReceiptData();
+    })
+    .catch((error) => console.log("ERROR", error));
+ 
+  $("#editmrNo").val("");
+  $("#editdatePicker").val("");
+  $("#editregNo").val("");
+  $("#editstudentName").val("");
+  $("#editContact").val("");
+  $("#editAddress").val("");
+  $("#editbedNo").val("");
+  $("#editAmountReceived").val("");
+  $("#editMoneyReceiptModal").modal("hide");
+}
+
+function deleteMoneyRow(id) {
+  var confirmation = confirm("Are you sure you want to delete this row?");
+  if (confirmation) {
+    var requestOptions = {
+      method: "DELETE",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/Money/" + id, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        showMoneyReceiptData();
+      })
+      .catch((error) => console.log("ERROR", error));
+  }
+}
+
+
+
+function RegdFunction() {
+  var settings = {
+    url: "http://localhost:3000/Money",
+    method: "GET",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    let a = document.getElementById("regNo").value;
+
+    for (i = 0; i < response.length; i++) {
+      if (response[i].regNo === a) {
+        document.getElementById("mrNo").value = response[i].mrNo;
+        document.getElementById("datePicker").value = response[i].datePicker;
+        document.getElementById("studentName").value = response[i].studentName;
+        document.getElementById("contactNo").value = response[i].contactNo;
+        document.getElementById("address").value = response[i].address;
+        document.getElementById("bedNo").value = response[i].bedNo;
+        document.getElementById("amountReceived").value = response[i].amountReceived;
+      }
+    }
+  });
+}
+
+
 // JS CODE FOR FEE SUMMARY
 // JS CODE FOR CHANGE PASSWORD
 // JS CODE FOR PROFILE

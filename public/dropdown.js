@@ -35,3 +35,20 @@ function dropdownFunction2() {
     });
   }
   
+  //for registrationNo dropdown
+
+  function dropdownFunction3(){
+    var settings = {
+    url: "http://localhost:3000/Money",
+    method: "GET",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(function (response) {
+    let option1 = '<option value="" selected>Select Registration No</option>';
+    for (let i = 0; i < response.length; i++) {
+      option1 += "<option>" + response[i].regNo + "</option>";
+    }
+    document.getElementById("regNo").innerHTML = option1;
+  });
+  }
