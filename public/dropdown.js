@@ -50,5 +50,6 @@ function dropdownFunction2() {
       option1 += "<option>" + response[i].regNo + "</option>";
     }
     document.getElementById("regNo").innerHTML = option1;
+    document.getElementById("editregNo").innerHTML = option1;
   });
   }

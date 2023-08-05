@@ -111,6 +111,7 @@ function addRoom() {
   //$("roomID").val("");
   $("roomNo").val("");
   $("totalBeds").val("");
+  $("#myModal").modal("hide");
 }
 
 // ROOM DETAILS DISPLAY FUNCTION

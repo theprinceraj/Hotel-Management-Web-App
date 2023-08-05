@@ -1,11 +1,6 @@
 {
   "RoomMaster": [
     {
-      "roomNo": "101",
-      "totalBeds": "01",
-      "id": 1
-    },
-    {
       "roomNo": "102",
       "totalBeds": "02",
       "id": 2
@@ -19,6 +14,11 @@
       "roomNo": "104",
       "totalBeds": "04",
       "id": 4
+    },
+    {
+      "roomNo": "102",
+      "totalBeds": "02",
+      "id": 5
     }
   ],
   "Bed": [
@@ -35,10 +35,10 @@
       "id": 2
     },
     {
-      "broomNo": "103",
+      "broomNo": "110",
       "bedNo": "03",
-      "bedCharge": "1500",
-      "id": 3
+      "bedCharge": "1200",
+      "id": 4
     }
   ],
   "Student": [
@@ -74,7 +74,7 @@
     {
       "mrNo": "01",
       "datePicker": "1000-02-01",
-      "regNo": "Select Registration No",
+      "regNo": "202231",
       "studentName": "Rajesh",
       "contact": "988888888888",
       "address": "Hinjewadi",
