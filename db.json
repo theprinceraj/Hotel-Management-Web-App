@@ -139,20 +139,6 @@
       "id": 3
     }
   ],
-  "Password": [
-    {
-      "oldPassword": "gamer@1234",
-      "newPassword": "gamer@0007",
-      "reenterPassword": "gamer@007",
-      "id": 1
-    },
-    {
-      "oldPassword": "racer@9090",
-      "newPassword": "racer@0000",
-      "reenterPassword": "racer@0000",
-      "id": 2
-    }
-  ],
   "Profile": [
     {
       "userName": "gamer123",
@@ -173,24 +159,14 @@
   ],
   "Credentials": [
     {
-      "username": "hello",
-      "password": "hello",
+      "username": "Helllloo",
+      "password": "hi ",
       "id": 1
     },
     {
-      "username": "Helllloo",
-      "password": "hi ",
+      "username": "test",
+      "password": "PrinceRaj",
       "id": 2
-    },
-    {
-      "username": "Hello",
-      "password": "HelloThere",
-      "id": 3
-    },
-    {
-      "username": "Hello",
-      "password": "Prince",
-      "id": 4
     }
   ]
 }

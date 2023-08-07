@@ -38,7 +38,7 @@ bedMasterLink.addEventListener("click", function (e) {
   moneyReceiptContent.style.display = "none";
 });
 
-studentMasterLink.addEventListener("click", function (e){
+studentMasterLink.addEventListener("click", function (e) {
   e.preventDefault();
   dashboardContent.style.display = "none";
   roomMasterContent.style.display = "none";
@@ -47,14 +47,14 @@ studentMasterLink.addEventListener("click", function (e){
   moneyReceiptContent.style.display = "none";
 });
 
-moneyReceiptLink.addEventListener("click", function (e){
+moneyReceiptLink.addEventListener("click", function (e) {
   e.preventDefault();
   dashboardContent.style.display = "none";
   roomMasterContent.style.display = "none";
   bedMasterContent.style.display = "none";
   studentMasterContent.style.display = "none";
   moneyReceiptContent.style.display = "block";
-  });
+});
 
 //  $(document).ready(function () {
 //       $(".bed-master-link").click(function () {
@@ -204,7 +204,7 @@ function editRoom() {
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-   // roomID: $("#editRoomID").val(),
+    // roomID: $("#editRoomID").val(),
     roomNo: $("#editRoomNo").val(),
     totalBeds: $("#editTotalBeds").val(),
   });
@@ -608,8 +608,8 @@ function addMoneyReceipt() {
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    mrNo:$("#mrNo").val(),
-    datePicker:$("#datePicker").val(),
+    mrNo: $("#mrNo").val(),
+    datePicker: $("#datePicker").val(),
     regNo: $("#regNo").val(),
     studentName: $("#studentName").val(),
     contact: $("#contact").val(),
@@ -663,7 +663,7 @@ function showMoneyReceiptData() {
           "</td><td>" +
           response[i].mrNo +
           "</td><td>" +
-          response[i].datePicker + 
+          response[i].datePicker +
           "</td><td>" +
           response[i].regNo +
           "</td><td>" +
@@ -739,7 +739,7 @@ function editMoneyReceipt() {
       showMoneyReceiptData();
     })
     .catch((error) => console.log("ERROR", error));
- 
+
   $("#editmrNo").val("");
   $("#editdatePicker").val("");
   $("#editregNo").val("");
@@ -795,9 +795,56 @@ function RegdFunction() {
   });
 }
 
-
 // JS CODE FOR FEE SUMMARY
+
+
 // JS CODE FOR CHANGE PASSWORD
+function changePassword() {
+  const oldPass = $("#oldPassword").val();
+  const newPass = $("#newPassword").val();
+  const reenterPass = $("#reenterPassword").val();
+
+  if (newPass !== reenterPass) {
+    alert("Entered new passwords do not match!");
+    return;
+  }
+
+  const usernameFetched = 'test'; // fetch username of logged in user
+
+  fetch('http://localhost:3000/Credentials')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+
+      const matchingEntry = data.find(user => user.username === usernameFetched);
+      if (matchingEntry) {
+        passwordOfTestUsername = matchingEntry.password;
+        console.log('Password of testUsername:', passwordOfTestUsername);
+
+        if (oldPass === passwordOfTestUsername) {
+          const updatedPassword = newPass;
+
+          // Now, send a PUT request to the server to update the password
+          const updatedEntry = { ...matchingEntry, password: updatedPassword };
+          const updateURL = `http://localhost:3000/Credentials/${matchingEntry.id}`;
+          fetch(updateURL, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedEntry),
+          }).then(res => {
+            alert('Successfully updated password!');
+          })
+        }
+
+      } else {
+        alert(`No matching entry found for ${usernameFetched}.`);
+      }
+    })
+    .catch(err => console.log(err))
+}
+
 // JS CODE FOR PROFILE
 // JS CODE FOR LOGOUT
 
