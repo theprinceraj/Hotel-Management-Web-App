@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 20px;
+  width: 400px;
+  background-color: #dae3f4;
+  border-style: solid;
+  border-color: #4473c5;
+}
+#username,
+#password,
+#repassword {
+  background-color: #fbe5d7;
+  border-style: solid;
+  border-color: #4473c5;
+}
+#registerBtn {
+  width: 150px;
+  background-color: #4473c5;
+  border-style: solid;
+  border-color: #4473c5;
+  margin-left: auto;
+}
+
+h3 {
+  text-align: center;
+}
