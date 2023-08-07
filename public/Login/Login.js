@@ -20,18 +20,21 @@ $(document).ready(() => {
             .then((json) => {
                 // Loop through the credentials array
                 for (let user of json) {
+                    if(user.username !== inputUsername || user.password !== inputPassword){
+                        continue;
+                    }
                     // Check if the user email and password match the input
-                    if (user.username === inputUsername && user.password === inputPassword) {
+                    else if (user.username === inputUsername && user.password === inputPassword) {
                         // For demonstration purposes, we will just display the entered username and password
                         alert("Logged in with username: " + inputUsername + ", password: " + inputPassword);
                         // Redirect to hostel management system page after successful login
-                        window.location.href = "/new/3HostelPic/HostelPic.html";
+                        window.location.href = "http://localhost:3000/final.html";
                         // Break the loop
                         break;
                     }
-
                     // Display an error message
                     alert('Invalid credentials!');
+
                 }
             })
             .catch(err => console.log(err))

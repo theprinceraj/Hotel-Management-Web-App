@@ -814,8 +814,6 @@ function changePassword() {
   fetch('http://localhost:3000/Credentials')
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-
       const matchingEntry = data.find(user => user.username === usernameFetched);
       if (matchingEntry) {
         passwordOfTestUsername = matchingEntry.password;
@@ -835,6 +833,8 @@ function changePassword() {
             body: JSON.stringify(updatedEntry),
           }).then(res => {
             alert('Successfully updated password!');
+            // refresh current window
+            window.location.reload();
           })
         }
 

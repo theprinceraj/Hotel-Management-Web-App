@@ -25,8 +25,12 @@ $(document).ready(function () {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.id) alert('Registration succesful!');
-                else alert('Registration succesful!');
+                if (data.id) {
+                    alert('Registration succesful!');
+                    window.location.href = "http://localhost:3000/Login/Login.html";
+                }
+                else
+                    alert('Registration failed!');
             })
             .catch(err => console.log(err))
     })
