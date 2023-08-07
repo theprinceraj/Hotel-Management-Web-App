@@ -845,6 +845,10 @@ function changePassword() {
     .catch(err => console.log(err))
 }
 
+function closeButtonOfChangePassword() {
+  window.location.href('http://localhost:3000/Login/Login.html');
+}
+
 // JS CODE FOR PROFILE
 // JS CODE FOR LOGOUT
 
