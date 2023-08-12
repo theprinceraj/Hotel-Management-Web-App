@@ -800,6 +800,7 @@ function RegdFunction() {
 
 // JS CODE FOR CHANGE PASSWORD
 function changePassword() {
+  const usernameFetched = $("#usernameInsideChangePassword").val();
   const oldPass = $("#oldPassword").val();
   const newPass = $("#newPassword").val();
   const reenterPass = $("#reenterPassword").val();
@@ -808,8 +809,6 @@ function changePassword() {
     alert("Entered new passwords do not match!");
     return;
   }
-
-  const usernameFetched = 'test'; // fetch username of logged in user
 
   fetch('http://localhost:3000/Credentials')
     .then(res => res.json())

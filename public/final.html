@@ -23,10 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a class="nav-link" href="http://localhost:3000/Login/Login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
+          <a class="nav-link" href="http://localhost:3000/final.html#profile-div"><i class="fas fa-user"></i> Profile</a>
         </li>
       </ul>
     </div>
@@ -846,6 +846,11 @@
                 <div class="heading-line"></div>
                 <form>
                   <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="usernameInsideChangePassword" name="usernameInsideChangePassword"
+                      placeholder="Enter Username" />
+                  </div>
+                  <div class="mb-3">
                     <label for="oldPassword" class="form-label">Old Password</label>
                     <input type="text" class="form-control" id="oldPassword" name="oldPassword"
                       placeholder="Enter Old Password" />
@@ -874,7 +879,7 @@
             </div>
 
             <!--Profile starts here-->
-            <div class="col-md-12 profile-content">
+            <div class="col-md-12 profile-content" id="profile-div">
               <div class="container">
                 <h4 class="text-center mb-4">Profile</h4>
                 <div class="heading-line"></div>
@@ -893,7 +898,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="Enter address" />
+                    <input type="text" class="form-control" id="addressColumnInsideProfile" placeholder="Enter address" />
                   </div>
                   <div class="mb-3">
                     <label for="contact" class="form-label">Contact</label>

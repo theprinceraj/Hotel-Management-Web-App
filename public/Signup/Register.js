@@ -27,7 +27,7 @@ $(document).ready(function () {
             .then(data => {
                 if (data.id) {
                     alert('Registration succesful!');
-                    window.location.href = "http://localhost:3000/Login/Login.html";
+                    window.location.replace("http://localhost:3000/Login/Login.html");
                 }
                 else
                     alert('Registration failed!');
