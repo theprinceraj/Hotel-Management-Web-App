@@ -16,6 +16,14 @@ $(document).ready(function () {
             return;
         }
 
+        fetch('http://localhost:3000/Profile', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({ userName: username })
+        }).catch(err => {})
+
         fetch('http://localhost:3000/Credentials', {
             method: 'POST',
             headers: {

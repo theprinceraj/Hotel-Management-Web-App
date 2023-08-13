@@ -816,7 +816,7 @@ function changePassword() {
       const matchingEntry = data.find(user => user.username === usernameFetched);
       if (matchingEntry) {
         passwordOfTestUsername = matchingEntry.password;
-        console.log('Password of testUsername:', passwordOfTestUsername);
+        // console.log('Password of testUsername:', passwordOfTestUsername);
 
         if (oldPass === passwordOfTestUsername) {
           const updatedPassword = newPass;
@@ -835,6 +835,8 @@ function changePassword() {
             // refresh current window
             window.location.reload();
           })
+        } else {
+          alert('Incorrect password entered.')
         }
 
       } else {
@@ -849,6 +851,38 @@ function closeButtonOfChangePassword() {
 }
 
 // JS CODE FOR PROFILE
+function saveProfileChanges() {
+  const usernameEntered = $("#username").val();
+  const firstNameEntered = $("#firstName").val();
+  const lastNameEntered = $("#lastName").val();
+  const addressEntered = $("#addressColumnInsideProfile").val();
+  const contactEntered = $("#contactColumnInsideProfile").val();
+  const emailEntered = $("#email").val();
+
+  fetch('http://localhost:3000/Profile')
+    .then(res => res.json())
+    .then(data => {
+      const matchingEntry = data.find(user => user.userName === usernameEntered);
+      if (matchingEntry) {
+        fetch(`http://localhost:3000/Profile/${matchingEntry.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userName: usernameEntered, firstName: firstNameEntered, lastName: lastNameEntered, address: addressEntered, contact: contactEntered, email: emailEntered
+          }),
+        })
+          .catch(e => { })
+        alert('Successfully updated profile!');
+      } else {
+        alert(`No matching entry found for ${usernameEntered}.`);
+      }
+    })
+}
+
+
+
 // JS CODE FOR LOGOUT
 
 
