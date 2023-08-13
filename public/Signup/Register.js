@@ -16,6 +16,7 @@ $(document).ready(function () {
             return;
         }
 
+        // creating a new profile with entered username
         fetch('http://localhost:3000/Profile', {
             method: 'POST',
             headers: {
@@ -24,6 +25,7 @@ $(document).ready(function () {
             body: JSON.stringify({ userName: username })
         }).catch(err => {})
 
+        // creating a new username, password pair with entered username
         fetch('http://localhost:3000/Credentials', {
             method: 'POST',
             headers: {

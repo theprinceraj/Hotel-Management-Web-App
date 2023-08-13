@@ -859,11 +859,13 @@ function saveProfileChanges() {
   const contactEntered = $("#contactColumnInsideProfile").val();
   const emailEntered = $("#email").val();
 
+  // sending fetch request to server to get details of existing profiles
   fetch('http://localhost:3000/Profile')
     .then(res => res.json())
     .then(data => {
       const matchingEntry = data.find(user => user.userName === usernameEntered);
       if (matchingEntry) {
+        // sending a PUT request to the server to update the profile with the new details
         fetch(`http://localhost:3000/Profile/${matchingEntry.id}`, {
           method: 'PUT',
           headers: {
@@ -881,6 +883,9 @@ function saveProfileChanges() {
     })
 }
 
+function closeButtonOfProfileUpdateSection() {
+  window.location.href('http://localhost:3000/Login/Login.html');
+}
 
 
 // JS CODE FOR LOGOUT
