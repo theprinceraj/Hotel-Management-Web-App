@@ -1,8 +1,8 @@
 .navbar {
-  background-color: #4473C5;
+  background-color: #4473c5;
   color: #fff;
   height: 80px;
-  border-bottom: 2px solid #34558B;
+  border-bottom: 2px solid #34558b;
 }
 
 .nav-link {
@@ -33,9 +33,9 @@
 .nav.flex-column {
   height: 90vh;
   overflow-y: auto;
-  background-color: #4473C5;
+  background-color: #4473c5;
   color: #fff;
-  border-right: 2px solid #34558B;
+  border-right: 2px solid #34558b;
 }
 
 @media (max-width: 991.98px) {
@@ -117,17 +117,47 @@
 #editContactNo,
 #editAddress,
 #editSBedNo,
-#editSBedCharge,
-#mrNo,
-#date,
-#amtReceived {
+#editSBedCharge {
   background-color: #fbe5d7;
   border-style: solid;
   border-color: #6e7386;
 }
 
+#mrNo,
+#datePicker,
+#regNo,
+#studentName,
+#contact,
+#address,
+#bedNo,
+#amountReceived,
+#editmrNo,
+#editdatePicker,
+#editregNo,
+#editstudentName,
+#editContact,
+#editAddress,
+#editbedNo,
+#editAmountReceived,
+#currentUsername,
+#oldPassword,
+#newPassword,
+#re-enterPassword,
+#pusername,
+#pfirstName,
+#plastName,
+#paddress,
+#pcontact,
+#pemail,
+#fromDate,
+#toDate {
+  background-color: #dae3f4;
+  border-style: solid;
+  border-color: #4473c5;
+}
+
 .col-md-9 {
-  background-color: #FBE5D7;
+  background-color: #fbe5d7;
 }
 
 .heading-line {
@@ -142,7 +172,7 @@
 }
 
 .btn-primary {
-  background-color: #4473C5;
+  background-color: #4473c5;
 }
 
 .table {
@@ -163,4 +193,17 @@
 .table td {
   border-top: 1px solid #57493e;
   padding: 12px 15px;
+}
+
+#roomMasterContainerDiv,
+#BedMasterContainerDiv,
+#studentMasterContainerDiv,
+#moneyReceiptContainerDiv,
+#feeSummaryContainerDiv,
+#changePasswordContainerDiv {
+  display: none;
+}
+
+#dashboardContainerDiv {
+  display: initial;
 }
