@@ -8,6 +8,12 @@ const studentMasterLink = document.querySelector(".student-master-link");
 const studentMasterContent = document.querySelector(".student-master-content");
 const moneyReceiptLink = document.querySelector(".money-receipt-link");
 const moneyReceiptContent = document.querySelector(".money-receipt-content");
+const feesSummaryLink = document.querySelector(".fees-summary-link");
+const feesSummaryContent = document.querySelector(".fees-summary-content");
+const changePasswordLink = document.querySelector(".change-password-link");
+const changePasswordContent = document.querySelector(".change-password-content");
+const profileLink = document.querySelector(".profile-link");
+const profileContent = document.querySelector(".profile-content");
 
 
 
@@ -18,6 +24,9 @@ dashboardLink.addEventListener("click", function (e) {
   bedMasterContent.style.display = "none";
   studentMasterContent.style.display = "none";
   moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
 });
 
 roomMasterLink.addEventListener("click", function (e) {
@@ -27,6 +36,9 @@ roomMasterLink.addEventListener("click", function (e) {
   bedMasterContent.style.display = "none";
   studentMasterContent.style.display = "none";
   moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
 });
 
 bedMasterLink.addEventListener("click", function (e) {
@@ -36,6 +48,9 @@ bedMasterLink.addEventListener("click", function (e) {
   bedMasterContent.style.display = "block";
   studentMasterContent.style.display = "none";
   moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
 });
 
 studentMasterLink.addEventListener("click", function (e) {
@@ -45,6 +60,9 @@ studentMasterLink.addEventListener("click", function (e) {
   bedMasterContent.style.display = "none";
   studentMasterContent.style.display = "block";
   moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
 });
 
 moneyReceiptLink.addEventListener("click", function (e) {
@@ -54,6 +72,45 @@ moneyReceiptLink.addEventListener("click", function (e) {
   bedMasterContent.style.display = "none";
   studentMasterContent.style.display = "none";
   moneyReceiptContent.style.display = "block";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
+});
+
+feesSummaryLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  dashboardContent.style.display = "none";
+  roomMasterContent.style.display = "none";
+  bedMasterContent.style.display = "none";
+  studentMasterContent.style.display = "none";
+  moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "block";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "none";
+});
+
+changePasswordLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  dashboardContent.style.display = "none";
+  roomMasterContent.style.display = "none";
+  bedMasterContent.style.display = "none";
+  studentMasterContent.style.display = "none";
+  moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "block";
+  profileContent.style.display = "none";
+});
+
+profileLink.addEventListener("click", function (e) {
+  e.preventDefault();
+  dashboardContent.style.display = "none";
+  roomMasterContent.style.display = "none";
+  bedMasterContent.style.display = "none";
+  studentMasterContent.style.display = "none";
+  moneyReceiptContent.style.display = "none";
+  feesSummaryContent.style.display = "none";
+  changePasswordContent.style.display = "none";
+  profileContent.style.display = "block";
 });
 
 //  $(document).ready(function () {
@@ -795,28 +852,123 @@ function RegdFunction() {
   });
 }
 
+
 // JS CODE FOR FEE SUMMARY
 
+// // Sample data for the table
+// const feesData = [
+//   { id: 1, mrNo: '01', date: '2023-01-01', studentName: 'Amit Kumar', amount: '1500', regNo: '202301' },
+//   { id: 2, mrNo: '02', date: '2023-02-01', studentName: 'Bikash Jena', amount: '1500', regNo: '202302' },
+//   { id: 3, mrNo: '03', date: '2023-03-01', studentName: 'Chunnu Mitra', amount: '1500', regNo: '202303' },
+//   { id: 4, mrNo: '04', date: '2023-04-01', studentName: 'Vibash Verma', amount: '1500', regNo: '202304' },
+//   { id: 5, mrNo: '05', date: '2023-05-01', studentName: 'Subrato Mahato', amount: '1500', regNo: '202305' },
+//   // Add more data here
+// ];
+
+const showButton = document.querySelector('.btn-primary');
+const fromDateInput = document.getElementById('fromDate');
+const toDateInput = document.getElementById('toDate');
+const regNoDropdown = document.getElementById('regNoDropdown');
+const feesTable = document.getElementById('feesTable');
+
+// Function to filter and update the table
+function updateTable() {
+  const fromDate = new Date(fromDateInput.value);
+  const toDate = new Date(toDateInput.value);
+  console.log(fromDate, toDate)
+  const selectedRegNo = regNoDropdown.value;
+
+  console.log("Selected reg no: ", selectedRegNo);
+
+  var settings = {
+    url: "http://localhost:3000/Fee",
+    method: "GET",
+    timeout: 0,
+  };
+
+  $.ajax(settings).done(feesData => {
+    const filteredData = feesData.filter((item) => {
+      const itemDate = new Date(item.date);
+      console.log("Item reg no: ", item.registrationNo);
+      console.log(`itemData: ${itemDate}\n
+      fromDate: ${fromDate}\n
+      toDate: ${toDate}\n`)
+      return (
+        (itemDate >= fromDate && itemDate <= toDate) &&
+        (selectedRegNo === "" || item.registrationNo === selectedRegNo)
+      );
+    });
+
+    renderTable(filteredData);
+  })
+
+}
+
+// Function to render the filtered data in the table
+function renderTable(data) {
+  console.log(data)
+  feesTable.querySelector("tbody").innerHTML = data
+    .map(
+      (item) => `
+    <tr>
+        <td>${item.id}</td>
+        <td>${item.mrNo}</td>
+        <td>${item.date}</td>
+        <td>${item.registrationNo}</td>
+        <td>${item.studentName}</td>
+        <td>${item.amtReceived}</td>
+        <td><button class="btn btn-danger" onclick="deleteFeeSummarySearchRow(${item.id})">Delete</button></td>
+    </tr>`
+    )
+    .join("");
+}
+
+// Attach event listeners to the "Show" button and Registration No dropdown
+showButton.addEventListener("click", updateTable);
+regNoDropdown.addEventListener("change", updateTable);
+
+// Initial table population
+updateTable();
+// JS Code for deleting a particular row from fee summary search result
+function deleteFeeSummarySearchRow(id) {
+  var confirmation = confirm("Are you sure you want to delete this row?");
+  if (confirmation) {
+    var requestOptions = {
+      method: "DELETE",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3000/Fee/" + id, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        updateTable();
+      })
+      .catch((error) => console.log("ERROR", error));
+  }
+}
 
 // JS CODE FOR CHANGE PASSWORD
+
 function changePassword() {
-  const usernameFetched = $("#usernameInsideChangePassword").val();
   const oldPass = $("#oldPassword").val();
   const newPass = $("#newPassword").val();
-  const reenterPass = $("#reenterPassword").val();
+  const reenterPass = $("#re-enterPassword").val();
+  const currentUsername = $("#currentUsername").val(); // fetch username of logged in user
 
   if (newPass !== reenterPass) {
     alert("Entered new passwords do not match!");
     return;
   }
 
+
   fetch('http://localhost:3000/Credentials')
     .then(res => res.json())
     .then(data => {
-      const matchingEntry = data.find(user => user.username === usernameFetched);
+      const matchingEntry = data.find(user => user.username === currentUsername);
       if (matchingEntry) {
         passwordOfTestUsername = matchingEntry.password;
-        // console.log('Password of testUsername:', passwordOfTestUsername);
+        console.log(`Password of ${currentUsername}:`, passwordOfTestUsername);
 
         if (oldPass === passwordOfTestUsername) {
           const updatedPassword = newPass;
@@ -835,12 +987,10 @@ function changePassword() {
             // refresh current window
             window.location.reload();
           })
-        } else {
-          alert('Incorrect password entered.')
         }
 
       } else {
-        alert(`No matching entry found for ${usernameFetched}.`);
+        alert(`No matching entry found for ${currentUsername}.`);
       }
     })
     .catch(err => console.log(err))
@@ -851,41 +1001,6 @@ function closeButtonOfChangePassword() {
 }
 
 // JS CODE FOR PROFILE
-function saveProfileChanges() {
-  const usernameEntered = $("#username").val();
-  const firstNameEntered = $("#firstName").val();
-  const lastNameEntered = $("#lastName").val();
-  const addressEntered = $("#addressColumnInsideProfile").val();
-  const contactEntered = $("#contactColumnInsideProfile").val();
-  const emailEntered = $("#email").val();
-
-  // sending fetch request to server to get details of existing profiles
-  fetch('http://localhost:3000/Profile')
-    .then(res => res.json())
-    .then(data => {
-      const matchingEntry = data.find(user => user.userName === usernameEntered);
-      if (matchingEntry) {
-        // sending a PUT request to the server to update the profile with the new details
-        fetch(`http://localhost:3000/Profile/${matchingEntry.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userName: usernameEntered, firstName: firstNameEntered, lastName: lastNameEntered, address: addressEntered, contact: contactEntered, email: emailEntered
-          }),
-        })
-          .catch(e => { })
-        alert('Successfully updated profile!');
-      } else {
-        alert(`No matching entry found for ${usernameEntered}.`);
-      }
-    })
-}
-
-function closeButtonOfProfileUpdateSection() {
-  window.location.href('http://localhost:3000/Login/Login.html');
-}
 
 
 // JS CODE FOR LOGOUT
