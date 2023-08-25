@@ -23,12 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost:3000/Login/Login.html"><i class="fas fa-sign-out-alt"></i>
-            Logout</a>
+          <a class="nav-link" href="./Login/Login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost:3000/final.html#profile-div"><i class="fas fa-user"></i>
-            Profile</a>
+          <a class="nav-link profile-link" href="#"><i class="fas fa-user"></i> Profile</a>
         </li>
       </ul>
     </div>
@@ -57,10 +55,10 @@
             <a href="#" class="nav-link money-receipt-link"><i class="fas fa-receipt"></i> Money Receipt</a>
           </div>
           <div class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Fee Summary</a>
+            <a href="#" class="nav-link fees-summary-link"><i class="fas fa-file-invoice-dollar"></i> Fee Summary</a>
           </div>
           <div class="nav-item">
-            <a href="#" class="nav-link"><i class="fas fa-key"></i> Change Password</a>
+            <a href="#" class="nav-link change-password-link"><i class="fas fa-key"></i> Change Password</a>
           </div>
           <div class="nav-item nav-footer">
             <a href="#" class="nav-link"><i class="fas fa-user"></i> Admin</a>
@@ -75,7 +73,7 @@
         <div class="container-fluid">
           <div class="row">
             <!-- Dashboard content -->
-            <div class="col-md-12 dashboard-content">
+            <div class="col-md-12 dashboard-content" id="dashboardContainerDiv">
               <!-- Dashboard content goes here -->
               <img
                 src="https://www.hotelogix.com/blog/wp-content/uploads/2014/07/Effective-Hostel-PMS-for-Hostel-Management.jpg"
@@ -85,7 +83,7 @@
             <!-- dashboard-content div ends here -->
 
             <!-- Room master starts here-->
-            <div class="col-md-12 room-master-content">
+            <div class="col-md-12 room-master-content" id="roomMasterContainerDiv">
               <!-- Room Master content starts here -->
 
               <div class="container">
@@ -234,7 +232,7 @@
             <!-- RoomMaster content div ends here-->
 
             <!-- Bed master starts here -->
-            <div class="col-md-12 bed-master-content">
+            <div class="col-md-12 bed-master-content" id="BedMasterContainerDiv">
               <!-- Bed Master content starts here   -->
               <div class="col-10">
                 <div class="container">
@@ -383,7 +381,7 @@
             <!-- BedMaster content div ends here-->
 
             <!-- Student Master starts here -->
-            <div class="col-md-12 student-master-content">
+            <div class="col-md-12 student-master-content" id="studentMasterContainerDiv">
               <!-- Student Master content starts here -->
               <div class="container">
                 <!-- StudentMaster container div starts here-->
@@ -561,7 +559,7 @@
             <!-- StudentMaster content div ends here-->
 
             <!-- Money Receipt starts here -->
-            <div class="col-md-12 money-receipt-content">
+            <div class="col-md-12 money-receipt-content" id="moneyReceiptContainerDiv">
               <!-- Money Receipt content starts here -->
               <div class="container">
                 <!-- Money Receipt container starts here-->
@@ -767,162 +765,184 @@
             </div>
             <!-- Money Receipt content div ends here-->
 
-            <!-- Fee summary starts here -->
-            <div class="col-md-12 fees-summary-content">
+            <!--Fee Summary starts here-->
+
+            <div class="col-md-12 fees-summary-content" id="feeSummaryContainerDiv">
               <!--Fee Summary content starts here-->
               <div class="container">
                 <!--Fee Summary container starts here-->
                 <h4 class="text-center mb-4">Fees Summary</h4>
                 <div class="heading-line"></div>
-                <div class="form-inline">
-                  <!-- form-inline starts here -->
-                  <div class="form-group">
-                    <!-- form-group starts here -->
-                    <label for="from">From:</label>
-                    <input type="text" class="form-control datepicker" id="from" />
-                  </div>
-                  <!-- form-group ends here -->
-                  <div class="form-group">
-                    <!-- form-group starts here -->
-                    <label for="to">To:</label>
-                    <input type="text" class="form-control datepicker" id="to" />
-                  </div>
-                  <!-- form-group ends here -->
+                <!-- <div class="form-inline">  
+                    <div class="form-group">  
+                      <label for="from">From:</label>
+                      <input type="text" class="form-control datepicker" id="from">
+                    </div>  form-group ends here 
+                    <div class="form-group">  
+                      <label for="to">To:</label>
+                      <input type="text" class="form-control datepicker" id="to">
+                    </div>   
+                  </div> -->
+
+                <div class="col-md-3">
+                  <label for="fromDate">From:</label>
+                  <input type="date" id="fromDate" class="form-control">
                 </div>
-                <!-- form-inline ends here -->
-                <div class="form-inline">
-                  <!-- form-inline starts here -->
-                  <div class="form-group">
-                    <label for="registrationNo">Registration No:</label>
-                    <input type="text" class="form-control" id="registrationNo" />
-                  </div>
-                  <button type="button" class="btn btn-primary">Show</button>
+                <div class="col-md-3">
+                  <label for="toDate">To:</label>
+                  <input type="date" id="toDate" class="form-control">
                 </div>
-                <!-- form-inline ends here -->
-                <table class="table table-bordered">
-                  <!-- table starts here -->
+                <!-- <div class="form-inline"> 
+                    <div class="form-group">
+                      <label for="registrationNo">Registration No:</label>
+                      <input type="text" class="form-control" id="registrationNo">
+                    </div>
+                    <button type="button" class="btn btn-primary">Show</button>
+                  </div> form-inline ends here  -->
+
+                <div class="col-md-3">
+                  <label for="regNo">Registration No:</label>
+                  <select id="regNoDropdown" class="form-control">
+                    <option value="">All</option>
+                    <option value="202301">202301</option>
+                    <option value="202302">202302</option>
+                    <option value="202303">202303</option>
+                    <option value="202304">202304</option>
+                    <option value="202305">202305</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <button onclick="updateTable()" class="btn btn-primary mt-4">Show</button>
+                </div>
+                <!-- <table class="table table-bordered">  
+                    <thead>
+                      <tr>
+                        <th>MR NO</th>
+                        <th>Date</th>
+                        <th>Student Name</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>MR001</td>
+                        <td>2023-06-01</td>
+                        <td>John Doe</td>
+                        <td>$100</td>
+                        <td>
+                          <button class="btn btn-primary">Edit</button>
+                          <button class="btn btn-danger">Delete</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MR002</td>
+                        <td>2023-06-02</td>
+                        <td>Jane Smith</td>
+                        <td>$150</td>
+                        <td>
+                          <button class="btn btn-primary">Edit</button>
+                          <button class="btn btn-danger">Delete</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table> table ends here  -->
+
+                <table class="table" id="feesTable">
                   <thead>
                     <tr>
+                      <th>ID</th>
                       <th>MR NO</th>
-                      <th>Date</th>
-                      <th>Student Name</th>
-                      <th>Amount</th>
-                      <th>Action</th>
+                      <th>DATE FROM</th>
+                      <th>DATE TO</th>
+                      <th>STUDENT NAME</th>
+                      <th>AMOUNT</th>
+                      <th>ACTION</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>MR001</td>
-                      <td>2023-06-01</td>
-                      <td>John Doe</td>
-                      <td>$100</td>
-                      <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MR002</td>
-                      <td>2023-06-02</td>
-                      <td>Jane Smith</td>
-                      <td>$150</td>
-                      <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                      </td>
-                    </tr>
+                    <!-- Table body will be populated by JavaScript -->
                   </tbody>
                 </table>
-                <!-- table ends here -->
-              </div>
-              <!-- container ends here -->
-            </div>
-            <!-- content ends here -->
+              </div> <!-- container ends here -->
+            </div> <!-- content ends here -->
             <!--Fees Summary ends here-->
 
             <!--Change Password starts here-->
 
-            <div class="col-md-12 change-password-content">
+            <div class="col-md-12 change-password-content" id="changePasswordContainerDiv">
               <div class="container">
                 <h4 class="text-center mb-4">Change Password</h4>
                 <div class="heading-line"></div>
                 <form>
                   <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="usernameInsideChangePassword"
-                      name="usernameInsideChangePassword" placeholder="Enter Username" />
+                    <label for="currentUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="currentUsername" placeholder="Enter Username">
                   </div>
                   <div class="mb-3">
                     <label for="oldPassword" class="form-label">Old Password</label>
-                    <input type="text" class="form-control" id="oldPassword" name="oldPassword"
-                      placeholder="Enter Old Password" />
+                    <input type="text" class="form-control" id="oldPassword" placeholder="Enter Old Password">
                   </div>
                   <div class="mb-3">
                     <label for="newPassword" class="form-label">New Password</label>
-                    <input type="text" class="form-control" id="newPassword" name="newPassword"
-                      placeholder="Enter New Password" />
+                    <input type="text" class="form-control" id="newPassword" placeholder="Enter New Password">
                   </div>
                   <div class="mb-3">
-                    <label for="re-enterPassword" class="form-label">Re-enter Password</label>
-                    <input type="text" class="form-control" id="reenterPassword" name="reenterPassword"
-                      placeholder="Re enter Password" />
+                    <label for="re-enterPassword" class="form-label">Re enter Password</label>
+                    <input type="text" class="form-control" id="re-enterPassword" placeholder="Re enter Password">
                   </div>
 
                   <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary" onclick="changePassword()">
-                      Save
-                    </button>
-                    <button type="button" class="btn btn-secondary" onclick="closeButtonOfChangePassword()">
-                      Close
-                    </button>
+                    <button type="button" class="btn btn-primary" onclick="changePassword()">Save</button>
+                    <button type="button" class="btn btn-secondary">Close</button>
                   </div>
                 </form>
               </div>
             </div>
 
             <!--Profile starts here-->
-            <div class="col-md-12 profile-content" id="profile-div">
+            <div class="col-md-12 profile-content">
               <div class="container">
                 <h4 class="text-center mb-4">Profile</h4>
                 <div class="heading-line"></div>
                 <form id="profileData">
                   <div class="mb-3">
                     <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter user name" />
+                    <input type="text" class="form-control" id="pusername" placeholder="Enter user name">
                   </div>
                   <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Enter first name" />
+                    <input type="text" class="form-control" id="pfirstName" placeholder="Enter first name">
                   </div>
                   <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Enter last name" />
+                    <input type="text" class="form-control" id="plastName" placeholder="Enter last name">
                   </div>
                   <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="addressColumnInsideProfile"
-                      placeholder="Enter address" />
+                    <input type="text" class="form-control" id="paddress" placeholder="Enter address">
                   </div>
                   <div class="mb-3">
                     <label for="contact" class="form-label">Contact</label>
-                    <input type="text" class="form-control" id="contactColumnInsideProfile"
-                      placeholder="Enter contact number" />
+                    <input type="text" class="form-control" id="pcontact" placeholder="Enter contact number">
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" />
+                    <input type="email" class="form-control" id="pemail" placeholder="Enter email">
                   </div>
                   <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary" onclick="saveProfileChanges()">
-                      Save
-                    </button>
-                    <button type="button" class="btn btn-secondary">
-                      Close
-                    </button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary">Close</button>
                   </div>
                 </form>
               </div>
             </div>
+
+
+
+            <!-- </div> -->
+
+
           </div>
           <!-- row div ends here-->
         </div>
