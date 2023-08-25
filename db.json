@@ -160,7 +160,8 @@
       "lastName": "Sharma",
       "address": "Kanke,Ranchi",
       "contact": "9988776655",
-      "email": "gamer123@gmail.com"
+      "email": "gamer123@gmail.com",
+      "id": 1
     },
     {
       "userName": "racer909",
@@ -168,7 +169,17 @@
       "lastName": "Arora",
       "address": "Lalpur,Ranchi",
       "contact": "8866442211",
-      "email": "rahul909@gmail.com"
+      "email": "rahul909@gmail.com",
+      "id": 2
+    },
+    {
+      "userName": "popo33",
+      "firstName": "Dummy",
+      "lastName": "Dummy",
+      "address": "Dummy",
+      "contact": "6969696969",
+      "email": "Dummy@Dum.Dum",
+      "id": 3
     }
   ],
   "Credentials": [
@@ -201,6 +212,41 @@
       "username": "GamerProfessional",
       "password": "GamerProfessional123",
       "id": 6
+    },
+    {
+      "username": "Bhaalu",
+      "password": "bhaalu69",
+      "id": 7
+    },
+    {
+      "username": "BroIsPro",
+      "password": "BroIsPro1",
+      "id": 8
+    },
+    {
+      "username": "BROTHERpro",
+      "password": "BROTHERpro0",
+      "id": 9
+    },
+    {
+      "username": "BROTHERpro",
+      "password": "BROTHERpro0",
+      "id": 10
+    },
+    {
+      "username": "BoyBoy",
+      "password": "BoyBoy0",
+      "id": 11
+    },
+    {
+      "username": "bearThe",
+      "password": "bearThe0",
+      "id": 12
+    },
+    {
+      "username": "popo33",
+      "password": "popo336",
+      "id": 13
     }
   ]
 }

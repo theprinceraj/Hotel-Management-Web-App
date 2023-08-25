@@ -23,10 +23,25 @@ $(document).ready(function () {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.id) {
+                if (data) {
                     console.log('Registration successful:', data);
-                    window.location.href = "/Login/Login.html";
+
+                    // Create dummy profile for the new user
+                    fetch('http://localhost:3000/Profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            'userName': username, 'firstName': 'Dummy', 'lastName': 'Dummy', 'address': 'Dummy', 'contact': '6969696969', 'email': 'Dummy@Dum.Dum'
+                        })
+                    }).then(res => res.json()).then(data => {
+                        if (data)
+                            console.log('Dummy profile created')
+                    }).catch(e => console.error(e))
+
                     alert('Registration successful! You will now be redirected to the login page.');
+                    window.location.href = "/Login/Login.html";
 
 
                 } else {
@@ -35,7 +50,7 @@ $(document).ready(function () {
                 }
             })
             .catch(err => {
-                console.error('Error during registration:', err);
+                console.log('Error during registration:', err);
                 alert('An error occurred during registration.');
             });
     });

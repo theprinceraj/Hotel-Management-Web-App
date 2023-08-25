@@ -136,7 +136,6 @@ function addRoom() {
     .then((response) => response.json())
     .then((data) => {
       //Handle the response here if needed
-      console.log(data); //Log the response to the console
       showData(); //Refresh the table
     })
     .catch((error) => console.log("ERROR", error));
@@ -225,7 +224,6 @@ function deleteRoomRow(id) {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response here if needed
-        console.log(data); // Log the response to the console
         showData(); // Refresh the table
       })
       .catch((error) => console.log("ERROR", error));
@@ -252,7 +250,6 @@ function editRoom() {
   fetch("http://localhost:3000/RoomMaster/" + currentEditID, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       showData();
     })
     .catch((error) => console.log("ERROR", error));
@@ -290,7 +287,6 @@ function addBed() {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response here if needed
-      console.log(data); // Log the response to the console
       show1Data(); // Refresh the table
     })
     .catch((error) => console.log("Error:", error));
@@ -397,7 +393,6 @@ function editBed() {
   fetch("http://localhost:3000/Bed/" + currentEditID, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       show1Data();
     })
     .catch((error) => console.log("ERROR", error));
@@ -420,7 +415,6 @@ function deleteBedRow(id) {
     fetch("http://localhost:3000/Bed/" + id, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
         show1Data();
       })
       .catch((error) => console.log("ERROR", error));
@@ -477,7 +471,6 @@ function addStudent() {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response here if needed
-      console.log(data); // Log the response to the console
       showStudentData(); // Refresh the table
     })
     .catch((error) => console.log("Error:", error));
@@ -575,7 +568,6 @@ function editStudent() {
   fetch("http://localhost:3000/Student/" + currentEditID, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       showStudentData();
     })
     .catch((error) => console.log("ERROR", error));
@@ -600,7 +592,6 @@ function deleteStudentRow(id) {
     fetch("http://localhost:3000/Student/" + id, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         showStudentData();
       })
       .catch((error) => console.log("ERROR", error));
@@ -662,7 +653,6 @@ function addMoneyReceipt() {
     .then((response) => response.json())
     .then((data) => {
       // Handle the response here if needed
-      console.log(data); // Log the response to the console
       showMoneyReceiptData(); // Refresh the table
     })
     .catch((error) => console.log("Error:", error));
@@ -768,7 +758,6 @@ function editMoneyReceipt() {
   fetch("http://localhost:3000/Money/" + currentEditID, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       showMoneyReceiptData();
     })
     .catch((error) => console.log("ERROR", error));
@@ -795,7 +784,6 @@ function deleteMoneyRow(id) {
     fetch("http://localhost:3000/Money/" + id, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         showMoneyReceiptData();
       })
       .catch((error) => console.log("ERROR", error));
@@ -851,11 +839,7 @@ const feesTable = document.getElementById('feesTable');
 function updateTable() {
   const fromDate = new Date(fromDateInput.value);
   const toDate = new Date(toDateInput.value);
-  console.log(fromDate, toDate)
   const selectedRegNo = regNoDropdown.value;
-
-  console.log("Selected reg no: ", selectedRegNo);
-
   var settings = {
     url: "http://localhost:3000/Fee",
     method: "GET",
@@ -865,10 +849,6 @@ function updateTable() {
   $.ajax(settings).done(feesData => {
     const filteredData = feesData.filter((item) => {
       const itemDate = new Date(item.date);
-      console.log("Item reg no: ", item.registrationNo);
-      console.log(`itemData: ${itemDate}\n
-      fromDate: ${fromDate}\n
-      toDate: ${toDate}\n`)
       return (
         (itemDate >= fromDate && itemDate <= toDate) &&
         (selectedRegNo === "" || item.registrationNo === selectedRegNo)
@@ -882,7 +862,6 @@ function updateTable() {
 
 // Function to render the filtered data in the table
 function renderTable(data) {
-  console.log(data)
   feesTable.querySelector("tbody").innerHTML = data
     .map(
       (item) => `
@@ -917,7 +896,6 @@ function deleteFeeSummarySearchRow(id) {
     fetch("http://localhost:3000/Fee/" + id, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         updateTable();
       })
       .catch((error) => console.log("ERROR", error));
@@ -944,7 +922,7 @@ function changePassword() {
       const matchingEntry = data.find(user => user.username === currentUsername);
       if (matchingEntry) {
         passwordOfTestUsername = matchingEntry.password;
-        console.log(`Password of ${currentUsername}:`, passwordOfTestUsername);
+        // console.log(`Password of ${currentUsername}:`, passwordOfTestUsername);
 
         if (oldPass === passwordOfTestUsername) {
           const updatedPassword = newPass;
@@ -977,7 +955,41 @@ function closeButtonOfChangePassword() {
 }
 
 // JS CODE FOR PROFILE
+function saveProfileChanges() {
+  const usernameEntered = $("#username").val();
+  const firstNameEntered = $("#firstName").val();
+  const lastNameEntered = $("#lastName").val();
+  const addressEntered = $("#addressColumnInsideProfile").val();
+  const contactEntered = $("#contactColumnInsideProfile").val();
+  const emailEntered = $("#email").val();
 
+  // sending fetch request to server to get details of existing profiles
+  fetch('http://localhost:3000/Profile')
+    .then(res => res.json())
+    .then(data => {
+      const matchingEntry = data.find(user => user.userName === usernameEntered);
+      if (matchingEntry) {
+        // sending a PUT request to the server to update the profile with the new details
+        fetch(`http://localhost:3000/Profile/${matchingEntry.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userName: usernameEntered, firstName: firstNameEntered, lastName: lastNameEntered, address: addressEntered, contact: contactEntered, email: emailEntered
+          }),
+        })
+          .catch(e => { })
+        alert('Successfully updated profile!');
+      } else {
+        alert(`No matching entry found for ${usernameEntered}.`);
+      }
+    })
+}
+
+function closeButtonOfProfileUpdateSection() {
+  window.location.href('http://localhost:3000/Login/Login.html');
+}
 
 // JS CODE FOR LOGOUT
 
