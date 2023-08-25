@@ -200,7 +200,8 @@
 #studentMasterContainerDiv,
 #moneyReceiptContainerDiv,
 #feeSummaryContainerDiv,
-#changePasswordContainerDiv {
+#changePasswordContainerDiv,
+#profileContainerDiv {
   display: none;
 }
 
