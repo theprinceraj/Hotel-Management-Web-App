@@ -1,43 +1,39 @@
 $(document).ready(() => {
-    // Code for handling the login button click
-    $('#loginBtn').click(() => {
-        var inputUsername = $('#username').val();
-        var inputPassword = $('#password').val();
+  $("#loginBtn").click(() => {
+    var inputUsername = $("#username").val();
+    var inputPassword = $("#password").val();
 
-        // Perform validation
-        if (inputUsername === "" || inputPassword === "") {
-            alert("Please enter both username and password.");
-            return;
+    if (inputUsername === "" || inputPassword === "") {
+      alert("Please enter both username and password.");
+      return;
+    }
+
+    fetch("http://localhost:3000/Credentials")
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(checkLoginIdPassword(json, inputUsername, inputPassword))
+        if (checkLoginIdPassword(json, inputUsername, inputPassword)) {
+          alert("Logged in with username: " + inputUsername + ", password: " + inputPassword);
+          // Redirect to hostel management system page after successful login
+          window.location.href = "/final.html";
+        } else {
+          alert("Invalid credentials!");
         }
+      })
+      .catch((err) => console.log(err));
+  });
 
-        // Perform login request (replace with your actual login logic)
+  function checkLoginIdPassword(json, usernameEntered, passwordEntered) {
+    // Loop through the credentials array
+    for (let user of json) {
+      if (
+        user.username === usernameEntered ||
+        user.password === passwordEntered
+      ) {
+        return true;
+      }
 
-        fetch('http://localhost:3000/Credentials')
-            .then((response) => {
-                // Parse the response as a JSON object
-                return response.json();
-            })
-            .then((json) => {
-                // Loop through the credentials array
-                for (let user of json) {
-                    if(user.username !== inputUsername || user.password !== inputPassword){
-                        continue;
-                    }
-                    // Check if the user email and password match the input
-                    else if (user.username === inputUsername && user.password === inputPassword) {
-                        // For demonstration purposes, we will just display the entered username and password
-                        alert("Logged in with username: " + inputUsername + ", password: " + inputPassword);
-                        // Redirect to hostel management system page after successful login
-                        window.location.href = "http://localhost:3000/final.html";
-                        // Break the loop
-                        break;
-                    }
-                    // Display an error message
-                    alert('Invalid credentials!');
-
-                }
-            })
-            .catch(err => console.log(err))
-
-    });
+    }
+    return false;
+  }
 });
