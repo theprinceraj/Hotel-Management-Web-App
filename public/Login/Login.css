@@ -1,36 +1,39 @@
 body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        .card {
-            border-radius: 20px;
-            padding: 20px;
-            width: 400px;
-            background-color: #FBE5D7;
-            border-style: solid;
-            border-color:  #4473C5;
-        }
+.card {
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    background-color: #FBE5D7;
+    border-style: solid;
+    border-color: #4473C5;
+}
 
-        h3{
-            text-align: center;
-            color: #010000;
-        }
-        #loginBtn{
-            width: 150px;
-            background-color: #4473C5;
-            border-style: solid;
-            border-color: #4473C5;
-            margin-left: auto;
-            }
-        #username,#password{
-            background-color: #DAE3F4;
-            border-style: solid;
-            border-color: #4473C5;
-        }
-        a{
-            float: right;
-        }
-        
+h3 {
+    text-align: center;
+    color: #010000;
+}
+
+#loginBtn {
+    width: 150px;
+    background-color: #4473C5;
+    border-style: solid;
+    border-color: #4473C5;
+    margin-left: auto;
+}
+
+#username,
+#password {
+    background-color: #DAE3F4;
+    border-style: solid;
+    border-color: #4473C5;
+}
+
+a {
+    float: right;
+}
