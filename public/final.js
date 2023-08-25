@@ -113,30 +113,6 @@ profileLink.addEventListener("click", function (e) {
   profileContent.style.display = "block";
 });
 
-//  $(document).ready(function () {
-//       $(".bed-master-link").click(function () {
-//         $(".dashboard-content, .room-master-content").hide();
-//         $(".bed-master-content").show();
-//       });
-//     });
-
-// $(document).ready(function () {
-//   $(".dashboard-link").click(function () {
-//     $(".room-master-content, .bed-master-content").hide();
-//     $(".dashboard-content").show();
-//   });
-
-//   $(".room-master-link").click(function () {
-//     $(".dashboard-content, .bed-master-content").hide();
-//     $(".room-master-content").show();
-//   });
-
-//   $(".bed-master-link").click(function () {
-//     $(".dashboard-content, .room-master-content").hide();
-//     $(".bed-master-content").show();
-//   });
-// });
-
 // JS CODE FOR ROOMMASTER
 // ADD NEW ROOM
 function addRoom() {
