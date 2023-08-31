@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $("#loginBtn").click(() => {
-    var inputUsername = $("#username").val();
+    var inputUsername = $("#username").val().toLowerCase();
     var inputPassword = $("#password").val();
 
     if (inputUsername === "" || inputPassword === "") {

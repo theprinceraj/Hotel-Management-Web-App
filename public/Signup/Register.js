@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('#registerBtn').click(() => {
-        var username = $('#username').val();
+        var usernameField = $('#username').val();
         var password = $('#password').val();
         var repassword = $('#repassword').val();
 
-        if (username === '' || password === '' || repassword === '') {
+        if (usernameField === '' || password === '' || repassword === '') {
             alert('Please enter all required fields.');
             return;
         }
@@ -13,6 +13,8 @@ $(document).ready(function () {
             alert('Passwords do not match.');
             return;
         }
+
+        var username = usernameField.toLowerCase();
 
         fetch('http://localhost:3000/Credentials', {
             method: 'POST',

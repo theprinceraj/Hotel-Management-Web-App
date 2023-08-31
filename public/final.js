@@ -848,6 +848,9 @@ function updateTable() {
 
   $.ajax(settings).done(feesData => {
     const filteredData = feesData.filter((item) => {
+
+      addDatesToRegNoDropdown(feesData);
+
       const itemDate = new Date(item.date);
       return (
         (itemDate >= fromDate && itemDate <= toDate) &&
@@ -858,6 +861,18 @@ function updateTable() {
     renderTable(filteredData);
   })
 
+}
+
+// function to add the dates fetched live from db.json in options of regNoDropdown of fee summary
+function addDatesToRegNoDropdown(jsonData) {
+  // Iterate through the "Fee" array in the JSON data
+  for (const entry of jsonData) {
+    const date = entry.date;
+    const option = document.createElement("option");
+    option.value = date;
+    option.textContent = date;
+    regNoDropdown.appendChild(option);
+  }
 }
 
 // Function to render the filtered data in the table
@@ -956,7 +971,7 @@ function closeButtonOfChangePassword() {
 
 // JS CODE FOR PROFILE
 function saveProfileChanges() {
-  const usernameEntered = $("#username").val();
+  const usernameEntered = $("#username").val().toLowerCase();
   const firstNameEntered = $("#firstName").val();
   const lastNameEntered = $("#lastName").val();
   const addressEntered = $("#addressColumnInsideProfile").val();
