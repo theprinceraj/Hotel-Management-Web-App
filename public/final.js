@@ -819,16 +819,6 @@ function RegdFunction() {
 
 // JS CODE FOR FEE SUMMARY
 
-// // Sample data for the table
-// const feesData = [
-//   { id: 1, mrNo: '01', date: '2023-01-01', studentName: 'Amit Kumar', amount: '1500', regNo: '202301' },
-//   { id: 2, mrNo: '02', date: '2023-02-01', studentName: 'Bikash Jena', amount: '1500', regNo: '202302' },
-//   { id: 3, mrNo: '03', date: '2023-03-01', studentName: 'Chunnu Mitra', amount: '1500', regNo: '202303' },
-//   { id: 4, mrNo: '04', date: '2023-04-01', studentName: 'Vibash Verma', amount: '1500', regNo: '202304' },
-//   { id: 5, mrNo: '05', date: '2023-05-01', studentName: 'Subrato Mahato', amount: '1500', regNo: '202305' },
-//   // Add more data here
-// ];
-
 const showButton = document.querySelector('.btn-primary');
 const fromDateInput = document.getElementById('fromDate');
 const toDateInput = document.getElementById('toDate');
@@ -847,15 +837,9 @@ function updateTable() {
   };
 
   $.ajax(settings).done(feesData => {
+    regNoDropdown.innerHTML = `<option value="">All</option>`;
+    populateRegNoDropdown(feesData, selectedRegNo);
     const filteredData = feesData.filter((item) => {
-      regNoDropdown.innerHTML = ``;
-      const allOption = document.createElement("option");
-      allOption.value = "All";
-      allOption.textContent = "All";
-      regNoDropdown.appendChild(allOption);
-
-      populateRegNoDropdown(feesData, selectedRegNo);
-
       const itemDate = new Date(item.date);
       return (
         (itemDate >= fromDate && itemDate <= toDate) &&
