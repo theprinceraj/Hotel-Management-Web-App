@@ -848,8 +848,12 @@ function updateTable() {
 
   $.ajax(settings).done(feesData => {
     const filteredData = feesData.filter((item) => {
-
-      addDatesToRegNoDropdown(feesData);
+      regNoDropdown.innerHTML = ``;
+      const allOption = document.createElement("option");
+      allOption.value = "All";
+      allOption.textContent = "All";
+      regNoDropdown.appendChild(allOption);
+      populateRegNoDropdown(feesData);
 
       const itemDate = new Date(item.date);
       return (
@@ -863,14 +867,14 @@ function updateTable() {
 
 }
 
-// function to add the dates fetched live from db.json in options of regNoDropdown of fee summary
-function addDatesToRegNoDropdown(jsonData) {
+// function to add the regNo fetched live from db.json in options of regNoDropdown of fee summary
+function populateRegNoDropdown(jsonData) {
   // Iterate through the "Fee" array in the JSON data
   for (const entry of jsonData) {
-    const date = entry.date;
+    const regNoWithinDropdown = entry.registrationNo;
     const option = document.createElement("option");
-    option.value = date;
-    option.textContent = date;
+    option.value = regNoWithinDropdown;
+    option.textContent = regNoWithinDropdown;
     regNoDropdown.appendChild(option);
   }
 }
