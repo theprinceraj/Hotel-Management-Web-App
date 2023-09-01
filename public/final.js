@@ -853,7 +853,8 @@ function updateTable() {
       allOption.value = "All";
       allOption.textContent = "All";
       regNoDropdown.appendChild(allOption);
-      populateRegNoDropdown(feesData);
+
+      populateRegNoDropdown(feesData, selectedRegNo);
 
       const itemDate = new Date(item.date);
       return (
@@ -868,13 +869,15 @@ function updateTable() {
 }
 
 // function to add the regNo fetched live from db.json in options of regNoDropdown of fee summary
-function populateRegNoDropdown(jsonData) {
+function populateRegNoDropdown(jsonData, searchedRegNo) {
   // Iterate through the "Fee" array in the JSON data
   for (const entry of jsonData) {
     const regNoWithinDropdown = entry.registrationNo;
     const option = document.createElement("option");
     option.value = regNoWithinDropdown;
     option.textContent = regNoWithinDropdown;
+    if (searchedRegNo == regNoWithinDropdown)
+      option.selected = true;
     regNoDropdown.appendChild(option);
   }
 }
