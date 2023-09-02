@@ -189,6 +189,15 @@
       "contact": "lolu1A",
       "email": "lolu1A",
       "id": 4
+    },
+    {
+      "userName": "deepakumar",
+      "firstName": "Dummy",
+      "lastName": "Dummy",
+      "address": "Dummy",
+      "contact": "6969696969",
+      "email": "Dummy@Dum.Dum",
+      "id": 5
     }
   ],
   "Credentials": [
@@ -241,6 +250,11 @@
       "username": "BROTHERpro",
       "password": "BROTHERpro0",
       "id": 10
+    },
+    {
+      "username": "deepakumar",
+      "password": "deep",
+      "id": 11
     }
   ]
 }
