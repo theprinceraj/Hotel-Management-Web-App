@@ -198,6 +198,15 @@
       "contact": "6969696969",
       "email": "Dummy@Dum.Dum",
       "id": 5
+    },
+    {
+      "userName": "rishav",
+      "firstName": "Rishav",
+      "lastName": "Panth",
+      "address": "Mumbai, India",
+      "contact": "88887777777",
+      "email": "rishab,pat@gmail.com",
+      "id": 6
     }
   ],
   "Credentials": [
@@ -255,6 +264,11 @@
       "username": "deepakumar",
       "password": "deep",
       "id": 11
+    },
+    {
+      "username": "rishav",
+      "password": "rishav1",
+      "id": 12
     }
   ]
 }
